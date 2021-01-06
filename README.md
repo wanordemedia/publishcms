@@ -1,2 +1,2 @@
 # mycms
-lol, geht sowiso nicht voran
+Wir haben angefangen
