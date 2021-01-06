@@ -1,3 +1,2 @@
-# mycms
-Wir haben angefangen
-test
+# Publish - MyCMS
+Publish wird, irgendwann mal, ein einfaches, quelloffenes, und potentes CMS für alle.
