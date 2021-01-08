@@ -2,7 +2,7 @@
 
 /* Include the Settings
 */
-  include "settings.php"; // Include the SQL-Settings
+  include "misc/sql.php"; // Include the SQL-Settings
 
 /* Clear all Variables
   All variables are set to "NULL" in case they are still loaded from a previous session
