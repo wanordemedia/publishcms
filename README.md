@@ -1,2 +1,2 @@
 # Publish - MyCMS
-Publish wird, irgendwann mal, ein einfaches, quelloffenes, und potentes CMS für alle.
+Publish will, at some time, become a easy to use, opensource and powerful content management system (CMS) for everyone.
