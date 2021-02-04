@@ -50,3 +50,4 @@
       <h3>Medien</h3>
 	     <?php include "tabs/tab.media.php"; ?>
     </div>
+    <script>document.getElementById("defaultOpen").click();</script>

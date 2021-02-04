@@ -11,4 +11,3 @@ function openSetting(evt, SettingName) {
   document.getElementById(SettingName).style.display = "block";
   evt.currentTarget.className += " active";
 }
-document.getElementById("defaultOpen").click()
