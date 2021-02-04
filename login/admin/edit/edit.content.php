@@ -1,0 +1,124 @@
+<?php
+
+$get_content_id = $id;
+
+if($sql_connect->connect_error) { // If the connection did not work, an error is output
+  die("Verbindung fehlgeschlagen: " . $sql_connect->connect_error);
+}
+
+$sql= "SELECT * FROM `$content_table` WHERE `ID` = '$get_content_id'";
+
+$ergebnis = $sql_connect->query("SET NAMES 'utf8'");
+$ergebnis = $sql_connect->query($sql); // Query of data from the database
+if($ergebnis->num_rows >0){
+  while($row = $ergebnis->fetch_assoc()){ // get an associative array from the database
+    $permalink_down = $row['permalink'];
+    $title_down = $row['title'];
+    $author_down = $row['author'];
+    $creadate_down = $row['crea-date'];
+    $header_down = $row['header'];
+    $content_down = $row['content'];
+    $follow_down = $row['follow'];
+    $doindex_down = $row['doindex'];
+    $description_down = $row['description'];
+    $keywords_down = $row['keywords'];
+    $ispost_down = $row['ispost'];
+    $pagetype_down = $row['pagetype'];
+    $pagetopic_down = $row['pagetopic'];
+  }
+
+}else{
+  echo "Leider nichts gefunden, bitte versuche es nocheinmal";
+}
+
+if(isset($_POST['update'])) {
+  $permalink_up = $_POST['permalink'];
+  $title_up = $_POST['title'];
+  $author_up = $_POST['author'];
+  $creadate_up = $_POST['crea-date'];
+  $header_up = $_POST['header'];
+  $content_up = $_POST['content'];
+  $follow_up = $_POST['follow'];
+  $doindex_up = $_POST['doindex'];
+  $description_up = $_POST['description'];
+  $keywords_up = $_POST['keywords'];
+  $ispost_up = $_POST['ispost'];
+  $pagetype_up = $_POST['pagetype'];
+  $pagetopic_up = $_POST['pagetopic'];
+
+  $update = "UPDATE `$content_table` SET
+  `permalink`='$permalink_up',
+  `title`='$title_up',
+  `author`='$author_up',
+  `header`='$header_up',
+  `content`='$content_up',
+  `description`='$description_up',
+  `keywords`='$keywords_up',
+  `follow`='$follow_up',
+  `doindex`='$doindex_up',
+  `ispost`='$ispost_up',
+  `pagetopic`='$pagetopic_up',
+  `pagetype`='$pagetype_up' WHERE `ID` = '$get_content_id'";
+
+ $qry = mysqli_query($sql_connect,$update);
+ if($qry) {
+  header("location: https://account.twc-media.de/benutzer/result.php?success=1");
+ }else {
+	header("location: https://account.twc-media.de/benutzer/result.php?success=0");
+ }
+}
+
+?>
+
+
+<center>
+<form method="POST" action="">
+
+	<div>
+	 <label for="text">Permalink:</label>	<br>
+	 <input type="text" name="permalink" value="<?php echo $permalink_down; ?>"><br><br> <!-- COMPANY -->
+	</div>
+
+  <div>
+   <label for="text">Title:</label>	<br>
+   <input type="text" name="title" value="<?php echo $title_down; ?>"><br><br> <!-- COMPANY -->
+  </div>
+
+  <div>
+   <label for="text">Autor:</label>	<br>
+   <input type="text" name="author" value="<?php echo $author_down; ?>"><br><br> <!-- COMPANY -->
+  </div>
+
+  <div>
+   <label for="text">Header:</label>	<br>
+   <input type="text" name="header" value="<?php echo $header_down; ?>"><br><br> <!-- COMPANY -->
+  </div>
+
+  <div>
+   <label for="text">Beschreibung:</label>	<br>
+   <input type="text" name="description" value="<?php echo $description_down; ?>"><br><br> <!-- COMPANY -->
+  </div>
+
+  <div>
+   <label for="text">Keywords:</label>	<br>
+   <input type="text" name="keywords" value="<?php echo $keywords_down; ?>"><br><br> <!-- COMPANY -->
+  </div>
+
+	<div>
+	 <label for="text">Inhalt:</label>	<br>
+ 	 <textarea type="text" name="content" cols="35" rows="4"><?php echo $content_down; ?></textarea> <br><br> <!-- TEXT -->
+	</div>
+
+	<div>
+	 <label for="text">Letzte Änderung:</label>	<br>
+ 	 <input  type="text" readonly name="updated_at" value="<?php echo $creadate_down; ?>"><br><br> <!-- UPDATET_AT-->
+
+	 <!-- <input type="hidden" type="text"  name="url_edit" value="<?php echo $url_fin; ?>"><br><br> -->
+
+ <input type="submit" name="update" value="Update">
+
+
+
+</form>
+
+</div>

@@ -20,7 +20,7 @@ if($ergebnis->num_rows >0){
    $author = $row['author'];
    $creadate = $row['crea-date'];
 
-   echo "<tr><td>".$titel."</td><td>".$author."</td><td>".$creadate."</td><td><a href='edit/edit.content.php?edit=$id'>Bearbeiten</a></td></tr>";
+   echo "<tr><td>".$titel."</td><td>".$author."</td><td>".$creadate."</td><td><button id='popup-button' onclick='togglePopup()'>Bearbeiten</button></td></tr>";
 
   }
 
