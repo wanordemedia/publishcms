@@ -4,8 +4,8 @@ $getauthor = mysqli_query("SELECT author FROM content WHERE permalink = $getperm
 $getpublisher = mysqli_query("SELECT content  FROM globalsettings WHERE name = 'publisher'");
 $getdescription = mysqli_query("SELECT description FROM content WHERE permalink = $getpermalink");
 $getkeywords = mysqli_query("SELECT keywords FROM content WHERE permalink = $getpermalink");
-$getpagetopic = mysqli_query("SELECT pagetopic FROM content WHERE permalink = $getpermalink");
-$getpagetype = mysqli_query("SELECT pagetype FROM content WHERE permalink = $getpermalink");
+$getpagetopic = mysqli_query("SELECT content FROM content WHERE name = 'permalink'");
+$getpagetype = mysqli_query("SELECT content FROM content WHERE name = 'permalink'");
 $getaudience = mysqli_query("SELECT content FROM globalsettings WHERE name = 'audience'");
 $getlanguage = mysqli_query("SELECT content FROM globalsettings WHERE name = 'language'");
 $getcopyright = mysqli_query("SELECT copyright FROM content WHERE permalink = $getpermalink");
